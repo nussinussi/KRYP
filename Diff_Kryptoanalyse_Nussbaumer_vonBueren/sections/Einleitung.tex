@@ -1,6 +1,18 @@
 \clearpage
 \section{Einleitung}\label{sec:Einleitung}
+Der Data Encription Standard (DES) war in den 70 Jahren das damals meist verwendete Verschlüsselungssystem für die zivile Bevölkerung. Mit dem DES konnte in dieser Zeit ein grosser Widerstand gegen Angriffe bewiesen werden. Jedoch mit der Differenziellen Kryptoanalyse, welche im Juli 1990 von Eli Biham und Adi Shamir veröffentlicht wurde, konnten bei Varianten von DES, mit bis 15 Runden, der geheime Schlüssel herausgefunden werden. 
 
+Kryptosysteme sind Funktionen, welche darauf basieren mehrere Runden zu durchlaufen. Bei einer Runde von DES sind verschiedene Funktionen enthalten es gibt eine Bit-Permutation, arithmetische Operationen, EXOR-verknüpfungen und die S-Boxen. Die S-Boxen sind nichtlineare Übersetzungstabellen. Der gesamte Verschlüsselungsalorythmus, die Permutations Tabellen wie auch die Überstzungstabellen der S-boxen sind öffentlich bekannt. Die Geheimhaltung der Daten hängt also vom zufällig gewählten geheimen Schlüssel ab. 
+
+ Wird ein Klartextangriff durchgeführt kann die Komplexität der DES Verschlüsselung um die Hälfte reduziert werden, da die Symmetrie durch Komplementierung genutzt werden kann.
+ 
+ \begin{eqnarray*}
+ T=DES(P,K)\\
+ \\
+  \bar{T}=DES(\bar{P},\bar{K})
+ \end{eqnarray*}
+ 
+ Somit entspricht der Wert X dem Bitweise komplementierten Wert $\bar{X}$ . Die Eigenschaft wird bei der Kryptonanalyse ausgenutzt indem zwei Klartext-Textpaare $P_{1} ,T_{1}$ und $P_{2} ,T_{2}$ zur Verfügung stehen und es gilt ${P}_{1} ,\bar{T}_{2}$ oder ${P}_{2} ,\bar{T}_{1}$ . Der Angreifer verschlüsselt $P_{1}$ unter allen $2^{55}$ Schlüsseln K, deren niederwertigstes Bit Null ist. Wenn im Geheimtext der Wert T gleich dem Wert $T_{1}$ ist, dann ist der entsprechende Schlüssel K wahrscheinlich der echte Schlüssel. Ist T gleich dem Wert $\bar{T}_{2}$ dann ist der Schlüssel wahrscheinlich $\bar{K}$. 
 
 
 
