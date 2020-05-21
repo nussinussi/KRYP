@@ -1,8 +1,12 @@
 \clearpage
 \section{Einleitung}\label{sec:Einleitung}
-Kryptosysteme sind Funktionen, welche darauf basieren mehrere Runden zu durchlaufen. Bei einer Runde von DES sind verschiedene Funktionen enthalten es gibt eine Bit-Permutation, arithmetische Operationen, EXOR-verknüpfungen und die S-Boxen. Die S-Boxen sind nichtlineare Übersetzungstabellen. Der gesamte Verschlüsselungsalorythmus, die Permutations Tabellen wie auch die Überstzungstabellen der S-boxen sind öffentlich bekannt. Die Geheimhaltung der Daten hängt also vom zufällig gewählten geheimen Schlüssel ab. Bei der Differenziellen Kryptoanalyse, wird ein Statischer angriff Angriff auf den den Verschlüsselungsalgorythmus, durchgeführt, bei dem der Angreifer selbstgewählte Klartext und Geheimtextpaare verwenden kann, es handelt sich also um eine chosen plaintext attack.  
+Kryptosysteme sind Funktionen, welche darauf basieren mehrere Runden zu durchlaufen. Bei einer Runde von DES sind verschiedene Funktionen enthalten.
+Es gibt eine Bit-Permutation, arithmetische Operationen, XOR-Verknüpfungen und die S-Boxen. Die S-Boxen sind nichtlineare Übersetzungstabellen. 
+Der gesamte Verschlüsselungsalorythmus, die Permutations-Tabellen wie auch die Übersetzungstabellen der S-boxen sind öffentlich bekannt. 
+Die Geheimhaltung der Daten hängt also vom zufällig gewählten geheimen Schlüssel ab. 
+Bei der Differenziellen Kryptoanalyse wird ein statischer Angriff auf den Verschlüsselungsalgorythmus durchgeführt, bei dem der Angreifer selbstgewählte Klartext und Geheimtextpaare verwenden kann. Es handelt sich also um eine chosen plaintext attack.  
 
-Wird ein Klartextangriff durchgeführt kann die Komplexität der DES Verschlüsselung in einer Runde um die Hälfte reduziert werden, da die Symmetrie durch Komplementierung genutzt werden kann.
+Wird ein Klartextangriff durchgeführt, kann die Komplexität der DES Verschlüsselung in einer Runde um die Hälfte reduziert werden, da die Symmetrie durch Komplementierung genutzt werden kann.
 
 Es werden Differenzen in den Klartextpaaren auf Differenzen in den Geiheimtextpaaren analysiert. Diese Differenzen werden verwendet um mögliche Schlüssel Wahrscheindlichkeiten zuzuordnen und den wahrscheinlichsten Schlüssel zu finden. Bei Anwendung dieser Methode auf den DES nimmt die Komplexität der Verschlüsselung mit der Anzahl der Runden zu, wobei sich die Differenziellekryptoanalyse nicht mehr bewehrt bei 16 Runden, im Bezug auf eine brute-force attack.
  
