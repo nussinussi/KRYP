@@ -1,0 +1,21 @@
+%\clearpage
+\section{Anwendung}\label{sec:Anwendung}
+In der Funktionsweise wurde bis jetzt lediglich eine Runde von DES durchgelaufen. Es braucht nur wenige Klartext-Geheimtext Paare damit der Schlüssel für eine Runde ermittelt werden kann. 
+Biham und Shamir haben weiter gezeigt, dass die Differenzielle Kryptoanalyse auf 2 Runden und mehr erweitert werden kann, doch umso höher die Anzahl Runden desto schwieriger die Entschlüsselung. Es muss mit den Wahrscheinlichkeiten aus der Differenzenverteilungstabelle weiter gerechnet werden. 
+Bei 16 Runden wird die Wahrscheinlichkeit den richtigen Schlüssel zu finden so klein, dass ein Brut-force Attacke genau so schneller wäre.
+Die differenzielle Kryptoanalyse ist hingegen effizient bei anderen DES-ähnliche Kryptosysteme. Verschlüsselungsverfahren wie die achtrunden Variante von Lucifer (Verschlüsselungsverfahren entworfen durch IBM vor DES) oder FEAL-4 / FEAL-8 können zum Beispiel mit der vorgestellten Methode gebrochen werden. FEAL mit weniger als 32 Runden können teilweise gebrochen werden \cite{biham_differential_1990}.
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

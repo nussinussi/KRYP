@@ -17,6 +17,7 @@ Es werden Differenzen in den Klartextpaaren auf Differenzen in den Geiheimtextpa
  \end{eqnarray*}
  
  Somit entspricht der Wert X dem Bitweise komplementierten Wert $\bar{X}$ . Die Eigenschaft wird bei der Kryptonanalyse ausgenutzt indem zwei Klartext-Textpaare $P_{1} ,T_{1}$ und $P_{2} ,T_{2}$ zur Verfügung stehen und es gilt ${P}_{1} ,\bar{T}_{2}$ oder ${P}_{2} ,\bar{T}_{1}$ . Der Angreifer verschlüsselt $P_{1}$ unter allen $2^{55}$ Schlüsseln K, deren niederwertigstes Bit Null ist. Wenn im Geheimtext der Wert T gleich dem Wert $T_{1}$ ist, dann ist der entsprechende Schlüssel K wahrscheinlich der echte Schlüssel. Ist T gleich dem Wert $\bar{T}_{2}$ dann ist der Schlüssel wahrscheinlich $\bar{K}$. 
+\todo{Du, ich glaube dass ist ein anderes Verfahren welches eine Brutforce attacke einfach doppelt so schnell macht bei wenig Runden. Aber das beschreibt nicht die Differenzielle Analyse ;) Ich glaube diesen Teil kann man weglassen. }
 
 
 
