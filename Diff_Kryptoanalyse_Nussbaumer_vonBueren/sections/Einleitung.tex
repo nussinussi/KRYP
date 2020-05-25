@@ -1,26 +1,15 @@
 \clearpage
 \section{Einleitung}\label{sec:Einleitung}
-Kryptosysteme sind Funktionen, welche darauf basieren mehrere Runden zu durchlaufen. Bei einer Runde von DES sind verschiedene Funktionen enthalten.
-Es gibt eine Bit-Permutation, arithmetische Operationen, XOR-Verknüpfungen und die S-Boxen. Die S-Boxen sind nichtlineare Übersetzungstabellen. 
-Der gesamte Verschlüsselungsalorythmus, die Permutations-Tabellen wie auch die Übersetzungstabellen der S-boxen sind öffentlich bekannt. 
+
+Kryptosysteme sind Funktionen, welche darauf basieren mehrere Runden zu durchlaufen, somit werden sie Komplexer und die Widerstand gegen Angriffe nimmt zu. Der Data Encryption Standard (DES), welcher in der 1970er Jahren von IBM entwickelt wurde durchläuft mehrere Runden in denen jeweils, eine Expansions-Permutation,  XOR-Verknüpfungen, S-Boxen, und Bit-Permutation enthalten sind. Die S-Boxen sind nichtlineare Funktionen. Einem Verschlüsselungsalgorithmus kann vertraut werden wenn dieser nach dem Prinzip von Kerckhoff implementiert wurde. Das Prinzip von Kerckhoff lautet, die Sicherheit des Algorithmus soll nur nach der Geheimhaltung des Schlüssels, nicht der Geheimhaltung des Algorithmus abhängen. 
+Der gesamte Verschlüsselungsalgorithmus vom DES, also die Funktionsweise, die Permutation-Tabellen wie auch die Substitutionsboxen (S-Boxen) sind öffentlich bekannt. 
 Die Geheimhaltung der Daten hängt also vom zufällig gewählten geheimen Schlüssel ab. 
-Bei der Differenziellen Kryptoanalyse wird ein statischer Angriff auf den Verschlüsselungsalgorythmus durchgeführt, bei dem der Angreifer selbstgewählte Klartext und Geheimtextpaare verwenden kann. Es handelt sich also um eine chosen plaintext attack.  
 
-Wird ein Klartextangriff durchgeführt, kann die Komplexität der DES Verschlüsselung in einer Runde um die Hälfte reduziert werden, da die Symmetrie durch Komplementierung genutzt werden kann.
-
-Es werden Differenzen in den Klartextpaaren auf Differenzen in den Geiheimtextpaaren analysiert. Diese Differenzen werden verwendet um mögliche Schlüssel Wahrscheindlichkeiten zuzuordnen und den wahrscheinlichsten Schlüssel zu finden. Bei Anwendung dieser Methode auf den DES nimmt die Komplexität der Verschlüsselung mit der Anzahl der Runden zu, wobei sich die Differenziellekryptoanalyse nicht mehr bewehrt bei 16 Runden, im Bezug auf eine brute-force attack.
+Bei der Differenziellen Kryptoanalyse wird ein statischer Angriff auf den Verschlüsselungsalgorithmus durchgeführt, bei dem der Angreifer selbstgewählte Klartext- und Geheimtextpaare verwenden kann. Es handelt sich also um eine chosen plaintext attack.  
+Es werden Differenzen in den Klartextpaaren auf Differenzen in den Geheimtextpaaren analysiert. Diese Differenzen werden verwendet um mögliche Schlüssel Wahrscheinlichkeiten zuzuordnen und somit den wahrscheinlichsten Schlüssel zu finden. 
+Wird ein Klartextangriff durchgeführt, kann die Komplexität der DES Verschlüsselung in einer Runde um die Hälfte reduziert werden, da die Symmetrie durch Komplementierung genutzt werden kann. Bei Anwendung dieser Methode auf den DES nimmt die Komplexität der Verschlüsselung mit der Anzahl der Runden zu, wobei sich die Differenzielle Kryptoanalyse bei 16 Runden im Anwendungsfall von DES nicht mehr bewehrt, im Bezug auf eine brute-force attack. Bei der brute-force attake, was so viel heisst wie rohe Gewalt, werden alle möglichen Schlüssel durchprobiert bis der richtige Schlüssel gefunden ist, was bei einer Schlüssellänge von 56-Bits, genau $2^{56}$ Operationen entspricht. 
  
- \begin{eqnarray*}
- T=DES(P,K)\\
- \\
-  \bar{T}=DES(\bar{P},\bar{K})
- \end{eqnarray*}
- 
- Somit entspricht der Wert X dem Bitweise komplementierten Wert $\bar{X}$ . Die Eigenschaft wird bei der Kryptonanalyse ausgenutzt indem zwei Klartext-Textpaare $P_{1} ,T_{1}$ und $P_{2} ,T_{2}$ zur Verfügung stehen und es gilt ${P}_{1} ,\bar{T}_{2}$ oder ${P}_{2} ,\bar{T}_{1}$ . Der Angreifer verschlüsselt $P_{1}$ unter allen $2^{55}$ Schlüsseln K, deren niederwertigstes Bit Null ist. Wenn im Geheimtext der Wert T gleich dem Wert $T_{1}$ ist, dann ist der entsprechende Schlüssel K wahrscheinlich der echte Schlüssel. Ist T gleich dem Wert $\bar{T}_{2}$ dann ist der Schlüssel wahrscheinlich $\bar{K}$. 
-\todo{Du, ich glaube dass ist ein anderes Verfahren welches eine Brutforce attacke einfach doppelt so schnell macht bei wenig Runden. Aber das beschreibt nicht die Differenzielle Analyse ;) Ich glaube diesen Teil kann man weglassen. }
-
-
-
+ \newpage
 
 
 
