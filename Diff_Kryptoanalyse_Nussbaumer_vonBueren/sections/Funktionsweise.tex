@@ -12,7 +12,7 @@ Die Ausgangspermutation und die XOR-Verknüpfung mit der linken Seite ($L_{0}$) 
 	\label{fig:DES_Differenz}
 \end{figure}
 
-Die Eingangswerte $S_{in,1}$ und $S_{in,2}$ der S-Boxen sind ohne Schlüssel nicht bekannt. Bei der Spalte \glqq Differenz\grqq{} ist dieser Eingang $S'_{in}$ aber bekannt. Eine doppelte XOR-Verknüpfung mit dem Schlüssel aufhebt sich auf. Mit anderen Worten ist: 
+Die Eingangswerte $S_{in,1}$ und $S_{in,2}$ der S-Boxen sind ohne Schlüssel nicht bekannt. Bei der Spalte \glqq Differenz\grqq{} ist dieser Eingang $S'_{in}$ aber bekannt. Eine doppelte XOR-Verknüpfung mit dem Schlüssel hebt sich auf. Mit anderen Worten ist: 
 
 \begin{equation}\label{equ:Schluessel_Differenz}
 S'_{in} = S_{in,1} \oplus S_{in,2} = (P_{E,1} \oplus K) \oplus (P_{E,2} \oplus K) = P_{E,1} \oplus P_{E,2} = P'_{E} 
