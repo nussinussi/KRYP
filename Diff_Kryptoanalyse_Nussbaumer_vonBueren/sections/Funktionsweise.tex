@@ -1,9 +1,9 @@
 \clearpage
 \section{Funktionsweise}\label{sec:Funktionsweise}
-Folglich soll die Funktionsweise einer differenziellen Kryptoanalyse auf eine Runde vom Data Encryption Standard (DES) erläutert werden. Es wird nur die rechte Seite einer DES-Runde betrachtet, womit die Klartexte 32 Bit lang sind. 
+Folglich soll die Funktionsweise einer differenziellen Kryptoanalyse auf eine Runde vom Data Encryption Standard erläutert werden. Es wird nur die rechte Seite ($R_{0}$) einer DES-Runde betrachtet, womit die verwendeten Klartexte 32 Bit lang sind. 
 Wie der Name es schon andeutet, wird bei diesem Verfahren die Differenz aus zwei Klartexten, in diesem Beispiel mit $P_{1}$ und $P_{2}$ bezeichnet, verwendet. Die Differenz wird üblicherweise mit $P'$ bezeichnet und folgt aus einer XOR-Verknüpfung der Klartexte, also $P' = P_{1} \oplus P_{2}$.
-Funktionen wie Expansionen, Permutationen oder XOR-Verknüpfen haben keine Einfluss auf die Differenz der Texte. Die Differenz kann also fast durch die gesamte Feistelstruktur beobachtet werden. Die Abbildung \ref{fig:DES_Differenz} zeigt wie sich eine Differenz durch das Netzwerk verhält. 
-Die Ausgangspermutation und die XOR-Verknüpfung mit der linken Seite ($L_{0}$) wurden nicht in der Abbildung dargestellt da sie bei einer Runde von DES nicht von Bedeutung sind.
+Funktionen wie Expansionen, Permutationen oder XOR-Verknüpfen haben keine Einfluss auf die Differenz der Texte. Die Differenz kann also fast durch die gesamte Feistelstruktur beobachtet werden, wie in der Abbildung \ref{fig:DES_Differenz} zu erkennen ist. 
+Eine DES-Runde beinhaltet am Ende der Runde noch eine Ausgangspermutation und die XOR-Verknüpfung mit der linken Seite ($L_{0}$). Diese Elemente wurden nicht in der Abbildung \ref{fig:DES_Differenz} dargestellt, da sie bei einer 1-Runden-Analyse von DES nicht von Bedeutung sind.
 
 \begin{figure}[h]
 	\centering
@@ -19,12 +19,12 @@ S'_{in} = S_{in,1} \oplus S_{in,2} = (P_{E,1} \oplus K) \oplus (P_{E,2} \oplus K
 \end{equation}
 
 
-Mit dieser Eigenschaft können die S-Boxen genauer analysiert werden. 
-Wie bereits in der Einleitung erwähnt, sind die acht S-Boxen nicht-lineraren Funktion. Um diese zu umgehen kann mit Wahrscheinlichkeiten gearbeitet werden.
-Anhand der öffentlich zugänglichen S-Boxen kann eine Differenzenverteilungstabelle aufgestellt werden. In dieser wird für jede Eingangsdifferenz die Zahl \todo{wäre da nicht "die Anzahl der Wertepaare.." verständlicher?} Wertepaar gegeben welche eine bestimmte Ausgangsdifferenz erzeugen. 
-Es gibt bei DES $2^{6} = 64$ verschieden mögliche Eingangsdifferenzen pro S-Box. Jede Eingangsdifferenz kann mit 64 verschiedenen Wertepaare erzeugt werden. Als Beispiel: für eine Eingangsdifferenz von $34_{h}$ (Hexadezimalzahl) gibt es laut Differenzenverteilungstabelle nur zwei von den 64 Wertepaar die, beim Durchqueren der S-Boxen 1, eine Ausgangsdifferenz von $04_{h}$ erzeugen \cite{noauthor_differenzielle_2019}\cite{biham_differential_1990}. 
+Mit dieser Eigenschaft gelingt es die S-Boxen genauer zu analysieren. 
+Wie bereits in der Einleitung erwähnt, sind die acht S-Boxen nichtlineraren Funktion. Um diese zu umgehen, wird mit Wahrscheinlichkeiten gearbeitet werden.
+Anhand der öffentlich zugänglichen S-Boxen kann eine Differenzenverteilungstabelle aufgestellt werden. In dieser wird für jede Eingangsdifferenz die Anzahl Wertepaar gegeben, welche eine bestimmte Ausgangsdifferenz erzeugen. 
+Es gibt bei DES pro S-Box $2^{6} = 64$ verschieden mögliche Eingangsdifferenzen. Jede Eingangsdifferenz kann mit 64 verschiedenen Wertepaare erzeugt werden. Als Beispiel: für eine Eingangsdifferenz von $34_{h}$ (Hexadezimalzahl) gibt es laut Differenzenverteilungstabelle nur zwei von den 64 Wertepaar die, beim Durchqueren der S-Boxen 1, eine Ausgangsdifferenz von $04_{h}$ erzeugen. Die anderen 62 Wertepaare mit der Differenz $34_{h}$ geben eine Ausgangsdifferenz ungleich $04_{h}$ heraus. 
 
-Da bei einer chosen plaintext attack die Ausgangsdifferenz bekannt ist, können die möglichen Eingangswertepaare $(S_{in,1}, S_{in,2})$ in einer weiteren Tabelle abgelesen werden. Entsprechend der Differenzenverteilungstabelle gibt es mehr oder weniger solche möglichen Eingangspaar.
+Da bei einer \glqq chosen plaintext attack\grqq{} die Ausgangsdifferenz bekannt ist, können die möglichen Eingangswertepaare $(S_{in,1}, S_{in,2})$ in einer weiteren Tabelle abgelesen werden. Entsprechend der Differenzenverteilungstabelle gibt es mehr oder weniger solche möglichen Eingangspaar.
 Für das Beispiel mit der Eingangsdifferenz $34_{h}$ und der Ausgangsdifferenz $04_{h}$ gibt es die 2 Wertepaare $(S_{in,1}, S_{in,2}) = (13_{h}, 27_{h})$ oder $(S_{in,1},S_{in,2}) = (27_{h}, 13_{h})$. Wäre die Ausgangsdifferenz $02_{h}$ bei einer Eingangsdifferenz von $34_{h}$ würde es 16 mögliche Wertepaare geben. 
 
 Da nun die Eingangswerte bekannt sind, kann der Schlüssel wie folgt berechnet werden:
@@ -32,11 +32,11 @@ Da nun die Eingangswerte bekannt sind, kann der Schlüssel wie folgt berechnet w
 K = P_{E,1} \oplus S_{in,1} = P_{E,2} \oplus S_{in,2}
 \end{equation}
 
-Weil nicht mit Sicherheit gesagt werden kann welches Wertepaar $(S_{in,1}, S_{in,2})$ das richtige ist, gibt es bei diesem Beispiel zwei mögliche Schlüssel. Es müssten die anderen S-Boxen betrachtet oder mehrere Durchgänge durchgeführt werden, um den falschen Schlüssel auszuschliessen. 
+Weil nicht mit Sicherheit gesagt werden kann welches Wertepaar $(S_{in,1}, S_{in,2})$ das richtige ist, gibt es bei diesem Beispiel zwei mögliche Schlüssel. Es müssten die anderen S-Boxen betrachtet oder mehrere Durchgänge durchgeführt werden, um den falschen Schlüssel auszuschliessen. \cite{biham_differential_1990}\cite{noauthor_differenzielle_2019}
 
 \subsection{Mehrere Runden von DES}\label{subsec:Mehrere_Runden}
 Bis jetzt wurde lediglich eine Runde von DES betrachtet. Es braucht nur wenige Klartext-Geheimtext-Paare damit der Schlüssel für eine Runde ermittelt werden kann. Bei mehr als 2 Runden von DES können nicht mehr alle wichtigen Differenzen in der Feistelstruktur ermittelt werden. 
-An dieser Stelle kommen die Runden-Charakteristik ins Spiel. Da die Zwischenresultate nicht zur Verfügung stehen, werden sich wiederholende Strukturen gesucht, sogenannte iterative Charakteristiken. Diese können sich nach eine oder mehrere Runden wiederholen. Die Abbildung \ref{fig:Charakteristik} zeigt eine Zweirunden-Charakteristik. 
+An dieser Stelle kommt die Runden-Charakteristik ins Spiel. Da die Zwischenresultate nicht zur Verfügung stehen, werden sich wiederholende Strukturen gesucht, sogenannte iterative Charakteristiken. Diese können sich nach einer oder mehrere Runden wiederholen. Die Abbildung \ref{fig:Charakteristik} zeigt eine Zweirunden-Charakteristik. 
 
 \begin{figure}[h]
 	\centering
@@ -45,12 +45,13 @@ An dieser Stelle kommen die Runden-Charakteristik ins Spiel. Da die Zwischenresu
 	\label{fig:Charakteristik}
 \end{figure}
 
-Die Wahrscheinlichkeiten (im Bild \ref{fig:Charakteristik} auf der rechten Seite: $p_{1} = 1$ = always und $P_{2} = 1/234$) stammen aus den Differenztabellen für alle 8 S-Boxen. Anders gesagt, gibt es eine Eingangsdifferenz von 234 welche am Ausgang die selbe Differenz hat. Falls diese gefunden wird, kann in der Feistelstruktur zurück gerechnet werden und die Rundenschlüssel somit ermittelt werden. 
-Es gibt andere Eingangsdifferenzen welche sich nach zwei Runden wiederholen, entsprechend nicht nur $\Omega_{P} = 19600000\ 00000000$,  jedoch sind diese eher selten. Die meisten davon sind gut bei wenig Runden von DES (bis 9 Runden).
-Das Beipiel in Abbildung \ref{fig:Charakteristik} kann aber bis 15 Runden von DES gebraucht werden. 
+Die Wahrscheinlichkeiten (im Bild \ref{fig:Charakteristik} auf der rechten Seite: $p_{1} = 1$ = always und $P_{2} = 1/234$) stammen aus den Differenztabellen für alle 8 S-Boxen. Anders gesagt, es gibt ein Eingangswertepaar von 234, dessen Eingangsdifferenz am Ausgang invertiert erscheint. Die anderen Wertepaare, auch \glqq falsche Paare\grqq{} genannt, liefern eine unbrauchbare Ausgangsdifferenz ($S'_{out} = S_{out,1} \oplus S_{out,1} \neq  19600000\ 00000000$). Erst bei einem gefundenen \glqq richtigen Paar\grqq{} kann die differenzielle Kryptoanalyse angewendet werden und der Schlüssel oder Teile des Schlüssels ermittelt werden.
+Die Schwierigkeit bei mehreren Runden von DES liegt darin Klartext- /Geheimtextpaare zu finden wobei deren Differenz in eine sich wiederholende Struktur passt.
+Es gibt andere Eingangsdifferenzen welche sich nach zwei Runden wiederholen, entsprechend nicht nur $\Omega_{P} = 19600000\ 00000000$,  jedoch sind diese eher selten. Die meisten davon sind gut bei wenig Runden von DES (siehe \cite{biham_differential_1990}).
+Das Beipiel in Abbildung \ref{fig:Charakteristik} kann bis 15 Runden von DES gebraucht werden. 
 Umso mehr Runden der Verschlüsselungsalgorithmus hat, desto unwahrscheinlicher ist es ein richtiges Paar zu finden. Die Wahrscheinlichkeiten der Charakteristiken werden miteinander Multipliziert.
-Bei 16 Runden wird die Wahrscheinlichkeit das richtige Paar zu finden so klein, dass ein Brut-force Attacke genau so schneller wäre.
-Die differenzielle Kryptoanalyse ist hingegen effizient bei anderen DES-ähnliche Kryptosysteme. Verschlüsselungsverfahren wie die Achtrunden-Variante von Lucifer (Verschlüsselungsverfahren entworfen durch IBM vor DES) oder FEAL-4 / FEAL-8 können zum Beispiel mit der vorgestellten Methode gebrochen werden. FEAL mit weniger als 32 Runden können teilweise gebrochen werden \cite{biham_differential_1990}.
+Bei 16 Runden wird die Wahrscheinlichkeit ein richtiges Paar zu finden so klein, dass ein Brut-Force-Attacke genau so schneller wäre.
+Die differenzielle Kryptoanalyse ist hingegen effizient bei anderen DES-ähnlichen Kryptosysteme. Verschlüsselungsverfahren wie die Achtrunden-Variante von Lucifer (Verschlüsselungsverfahren entworfen durch IBM vor DES) oder FEAL-4 / FEAL-8 können zum Beispiel mit der vorgestellten Methode gebrochen werden. FEAL mit weniger als 32 Runden können teilweise gebrochen werden. \cite{biham_differential_1990}
 
 
 

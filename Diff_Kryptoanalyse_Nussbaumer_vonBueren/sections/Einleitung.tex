@@ -1,13 +1,16 @@
 \clearpage
 \section{Einleitung}\label{sec:Einleitung}
 
-Kryptosysteme sind Funktionen, welche darauf basieren mehrere Runden zu durchlaufen, somit werden sie Komplexer und die Widerstand gegen Angriffe nimmt zu. Der Data Encryption Standard (DES), welcher in der 1970er Jahren von IBM entwickelt wurde durchläuft mehrere Runden in denen jeweils, eine Expansions-Permutation,  XOR-Verknüpfungen, S-Boxen, und Bit-Permutation enthalten sind. Die S-Boxen sind nichtlineare Funktionen. Einem Verschlüsselungsalgorithmus kann vertraut werden wenn dieser nach dem Prinzip von Kerckhoff implementiert wurde. Das Prinzip von Kerckhoff lautet, die Sicherheit des Algorithmus soll nur nach der Geheimhaltung des Schlüssels, nicht der Geheimhaltung des Algorithmus abhängen. 
-Der gesamte Verschlüsselungsalgorithmus vom DES, also die Funktionsweise, die Permutation-Tabellen wie auch die Substitutionsboxen (S-Boxen) sind öffentlich bekannt. 
-Die Geheimhaltung der Daten hängt also vom zufällig gewählten geheimen Schlüssel ab. 
+Kryptosysteme sind Funktionen, welche darauf basieren mehrere Runden zu durchlaufen, somit werden sie komplexer und der Widerstand gegen Angriffe nimmt zu. 
+Der Data Encryption Standard (DES), welcher in den 1970er-Jahren von IBM entwickelt wurde, durchläuft mehrere Runden, in denen jeweils eine Expansion-Permutation,  XOR-Verknüpfungen, S-Boxen und Bit-Permutation enthalten sind. Die S-Boxen sind nichtlineare Funktionen. 
+Einem Verschlüsselungsalgorithmus kann vertraut werden, wenn dieser nach dem Prinzip von Kerckhoffs implementiert wurde. 
+Das Kerckhoffs'sche Prinzip lautet: Die Sicherheit des Algorithmus soll nur von der Geheimhaltung des Schlüssels, nicht von der Geheimhaltung des Algorithmus abhängen. 
+Der gesamte Verschlüsselungsalgorithmus vom DES, also die Funktionsweise, die Permutation-Tabellen wie auch die Substitutionsboxen (S-Boxen), ist öffentlich bekannt. Die Geheimhaltung der Daten hängt also vom zufällig gewählten geheimen Schlüssel ab. 
 
-Bei der Differenziellen Kryptoanalyse wird ein statischer Angriff auf den Verschlüsselungsalgorithmus durchgeführt, bei dem der Angreifer selbstgewählte Klartext- und Geheimtextpaare verwenden kann. Es handelt sich also um eine chosen plaintext attack.  
-Es werden Differenzen in den Klartextpaaren auf Differenzen in den Geheimtextpaaren analysiert. Diese Differenzen werden verwendet um mögliche Schlüssel Wahrscheinlichkeiten zuzuordnen und somit den wahrscheinlichsten Schlüssel zu finden. 
-Wird ein Klartextangriff durchgeführt, kann die Komplexität der DES Verschlüsselung in einer Runde um die Hälfte reduziert werden, da die Symmetrie durch Komplementierung genutzt werden kann. Bei Anwendung dieser Methode auf den DES nimmt die Komplexität der Verschlüsselung mit der Anzahl der Runden zu, wobei sich die Differenzielle Kryptoanalyse bei 16 Runden im Anwendungsfall von DES nicht mehr bewehrt, im Bezug auf eine brute-force attack. Bei der brute-force attake, was so viel heisst wie rohe Gewalt, werden alle möglichen Schlüssel durchprobiert bis der richtige Schlüssel gefunden ist, was bei einer Schlüssellänge von 56-Bits, genau $2^{56}$ Operationen entspricht \cite{biham_differential_1990}. 
+Bei der differenziellen Kryptoanalyse wird ein statischer Angriff auf den Verschlüsselungsalgorithmus durchgeführt, bei dem der Angreifer selbstgewählte Klartext- und Geheimtextpaare verwenden kann. Es handelt sich also um eine \glqq chosen plaintext attack\grqq .  
+Es werden Differenzen in den Klartextpaaren auf Differenzen in den Geheimtextpaaren analysiert. Diese Differenzen werden verwendet um mögliche Schlüssel-Wahrscheinlichkeiten zuzuordnen und somit den wahrscheinlichsten Schlüssel zu finden. 
+%Wird ein Klartextangriff durchgeführt, kann die Komplexität der DES-Verschlüsselung in einer Runde um die Hälfte reduziert werden, da die Symmetrie durch Komplementierung genutzt werden kann. 
+Bei Anwendung dieser Methode auf den DES, nimmt die Komplexität der Verschlüsselung mit der Anzahl der Runden zu. Im Anwendungsfall bewehrt sich die differenzielle Kryptoanalyse bei 16 Runden von DES nicht mehr im Bezug auf eine \glqq brute force attack\grqq . Bei der Brute-Force-Attacke, was so viel heisst wie rohe Gewalt, werden alle möglichen Schlüssel durchprobiert bis der richtige Schlüssel gefunden ist, was bei einer Schlüssellänge von 56-Bits, genau $2^{56}$ Operationen entspricht \cite{biham_differential_1990}. 
  
  
 
